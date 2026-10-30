@@ -62,14 +62,33 @@
 .file-notes{color:#58462f;letter-spacing:.4px}
 .stamp{opacity:.82;text-shadow:1px 1px #fff4;box-shadow:0 0 0 1px #a51f1c22}
 @media(max-width:500px){.file{height:430px;padding:25px 21px 18px}.file:after{right:23px;height:34px}.file-top:after{top:-15px}.file-photo.file-nameplate{outline-width:4px}}
+
+/* Reference-led photographic case-file opening */
+.intro{background:radial-gradient(ellipse at 50% 45%,#352719 0%,#110d09 68%,#080706 100%);overflow:hidden}
+.intro:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#08070655,#080706aa),repeating-linear-gradient(0deg,transparent 0 3px,#d0b58a05 4px 5px);pointer-events:none}
+.file.file-image{
+ width:min(82vw,78vh,720px);height:auto;aspect-ratio:1;max-height:78vh;
+ padding:0;border:1px solid #765b37;background:#19130d;overflow:hidden;
+ box-shadow:0 28px 90px #000e,0 0 0 7px #21180f,0 0 0 8px #74563388;
+ display:block;position:relative;cursor:pointer;
+ transform:translateY(-150vh) rotate(-5deg);
+ animation:fileDrop 1.5s cubic-bezier(.18,.8,.25,1.15) 1s forwards;
+ transition:transform .7s,box-shadow .4s;
+}
+.file.file-image:before,.file.file-image:after{display:none;content:none}
+.file.file-image img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.02) saturate(.88)}
+.file.file-image:hover{box-shadow:0 35px 110px #000,0 0 0 7px #21180f,0 0 0 8px #9a7448;transform:translateY(-7px) rotate(-.5deg)}
+.file.file-image .image-tap{position:absolute;bottom:15px;left:0;right:0;text-align:center;color:#f0dfbd;font:9px var(--mono);letter-spacing:2px;text-shadow:0 2px 5px #000;background:linear-gradient(transparent,#120d09b8);padding:28px 8px 9px;opacity:.92}
+.intro-small{color:#b39b73;letter-spacing:2px}
+.tap-hint{color:#d3b77f}
+@media(max-width:600px){.file.file-image{width:min(90vw,72vh);max-height:72vh}.file.file-image .image-tap{font-size:8px;letter-spacing:1px}.intro-small{font-size:7px;bottom:calc(5vh + 24px)}}
 </style>
 </head>
 <body class="lock">
 <div class="room"><div class="lamp"></div><div class="floor"></div><div class="room-label">THE PRIVATE ARCHIVE <span> / EVIDENCE ROOM 09</span></div><div class="room-date">VISAKHAPATNAM · INDIA</div></div><div class="vignette"></div><div class="noise"></div>
 <section class="intro" id="intro" aria-label="Open the case file">
-<div class="cabinet"><div class="cabinet-number">ARCHIVE NO. 09 / 2026</div><div class="drawer"></div><div class="drawer"></div><div class="drawer"></div></div>
-<div class="file" id="file" role="button" tabindex="0" aria-label="Open most wanted case file"><div class="file-top"><div class="wanted">WANT<span>ED</span></div><div class="file-code">CONFIDENTIAL<br>CASE FILE 001<br>STATUS: ACTIVE</div></div><div class="criminal-title">MOST WANTED<br><em>MECHANICAL TECH</em><br>CRIMINAL</div><div class="file-photo file-nameplate"><div class="file-name-text">PRAVEEN RAJ<br><span>SAVARAPU</span></div><small>SUBJECT IDENTIFIED · CASE FILE 001</small></div><div class="file-bottom"><div class="file-notes">IDEAS<br>ENGINEERING<br>CODE & CREATION<br>U TOO CAN</div><div class="stamp">MOST<br>WANTED</div></div></div>
-<div class="intro-small">PROPERTY OF THE DEPARTMENT OF UNUSUAL IDEAS</div><div class="tap-hint">↳ TAP THE FILE TO INVESTIGATE ↲</div>
+<div class="file file-image" id="file" role="button" tabindex="0" aria-label="Open Praveen Raj Savarapu case file"><img src="/case-file-reference.webp" alt="Aged confidential investigation case file for Praveen Raj Savarapu on a police evidence desk"><span class="image-tap">↳ OPEN CASE FILE TO INVESTIGATE ↲</span></div>
+<div class="intro-small">PRIVATE ARCHIVE · VISAKHAPATNAM · INDIA</div><div class="tap-hint">↳ TAP THE CASE FILE TO ENTER ↲</div>
 </section>
 <div class="site" id="site">
 <header class="top"><a class="brand" href="#top">P.R. <b>/</b> SAVARAPU</a><nav class="nav"><a href="#profile">SUBJECT</a><a href="#cases">CASE FILES</a><a href="#timeline">TIMELINE</a><a href="#club">U TOO CAN</a><a href="#credentials">CREDENTIALS</a><a href="#contact">CONTACT</a><button class="close-file" id="reopen">↶ REOPEN FILE</button></nav></header>
