@@ -129,11 +129,33 @@ html{scroll-padding-top:82px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 
+
+/* CINEMATIC OPENING — retain the original case-file artwork */
+.intro{isolation:isolate}
+.intro .intro-frame{position:absolute;inset:0;pointer-events:none;z-index:1}
+.intro .intro-frame:before,.intro .intro-frame:after{content:"";position:absolute;left:0;right:0;height:0;background:#050403;animation:letterboxIn 1.1s ease-out .15s forwards}
+.intro .intro-frame:before{top:0}.intro .intro-frame:after{bottom:0}
+@keyframes letterboxIn{to{height:clamp(12px,3.2vh,34px)}}
+.intro .archive-mark{position:absolute;z-index:3;left:5vw;top:clamp(45px,8vh,85px);color:#b69b6c;font:9px var(--mono);letter-spacing:2.5px;line-height:1.9;text-shadow:0 2px 8px #000}
+.intro .archive-mark b{display:block;color:#d8c29a;font-weight:400}
+.intro .skip-intro{position:absolute;z-index:4;right:5vw;top:clamp(45px,8vh,85px);border:1px solid #9a7a4c88;background:#0b0907a8;color:#d6c39b;padding:10px 13px;font:9px var(--mono);letter-spacing:1.5px;cursor:pointer;backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
+.intro .skip-intro:hover{background:#a51f1c;border-color:#a51f1c;color:#fff}
+.intro .file.file-image{animation:fileDrop 1.5s cubic-bezier(.18,.8,.25,1.15) 1s both}
+.intro .file.file-image img{transform:scale(1.015);transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s}
+.intro:not(.done) .file.file-image:hover img{transform:scale(1.045);filter:contrast(1.08) saturate(.95)}
+.intro.done{opacity:0;visibility:hidden;transition:opacity .9s .25s,visibility .9s .25s}
+.intro.done .file.file-image{transform:translateY(24px) scale(.96) rotate(1deg);opacity:0;transition:transform .55s ease,opacity .5s ease}
+.intro.done .archive-mark,.intro.done .skip-intro,.intro.done .intro-small,.intro.done .tap-hint{opacity:0;transition:opacity .25s}
+.intro .tap-hint{z-index:2}
+.intro .intro-small{z-index:2}
+@media(max-width:600px){.intro .archive-mark{left:6vw;top:48px;font-size:8px}.intro .skip-intro{right:6vw;top:48px;padding:8px 10px;font-size:8px}.intro .intro-frame:before,.intro .intro-frame:after{animation:none;height:12px}}
+@media(prefers-reduced-motion:reduce){.intro .intro-frame:before,.intro .intro-frame:after{animation:none;height:12px}.intro .file.file-image{animation:none;transform:none}.intro .file.file-image img{transition:none}}
+
 </style>
 </head>
 <body class="lock">
 <div class="reading-line" id="readingLine"></div><div class="room"><div class="lamp"></div><div class="floor"></div><div class="room-label">THE PRIVATE ARCHIVE <span> / EVIDENCE ROOM 09</span></div><div class="room-date">VISAKHAPATNAM · INDIA</div></div><div class="vignette"></div><div class="noise"></div>
-<section class="intro" id="intro" aria-label="Open the case file">
+<section class="intro" id="intro" aria-label="Open the case file"><div class="intro-frame" aria-hidden="true"></div><div class="archive-mark">PRIVATE ARCHIVE <b>CASE NO. 001 / P.R.S.</b></div><button class="skip-intro" id="skipIntro" type="button">SKIP INTRO ↗</button>
 <div class="file file-image" id="file" role="button" tabindex="0" aria-label="Open Praveen Raj Savarapu case file"><img src="/Most%20Wanted%20Idea%20Maker%20Case%20File.png" alt="Aged confidential investigation case file for Praveen Raj Savarapu on a police evidence desk"><span class="image-tap">↳ OPEN CASE FILE TO INVESTIGATE ↲</span></div>
 <div class="intro-small">PRIVATE ARCHIVE · VISAKHAPATNAM · INDIA</div><div class="tap-hint">↳ TAP THE CASE FILE TO ENTER ↲</div>
 </section>
@@ -161,9 +183,9 @@ html{scroll-padding-top:82px}
 </div>
 <script>
 const intro=document.getElementById('intro'),site=document.getElementById('site'),file=document.getElementById('file');
-function openFile(){intro.classList.add('done');site.classList.add('open');document.body.classList.remove('lock');setTimeout(()=>document.getElementById('profile').scrollIntoView({behavior:'smooth'}),650)}
-file.addEventListener('click',openFile);file.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openFile()}});
-document.getElementById('reopen').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});intro.classList.remove('done');site.classList.remove('open');document.body.classList.add('lock')});
+let introOpened=false;function openFile(){if(introOpened)return;introOpened=true;intro.classList.add('done');setTimeout(()=>{site.classList.add('open');document.body.classList.remove('lock');setTimeout(()=>document.getElementById('profile').scrollIntoView({behavior:'smooth'}),450)},420)}
+document.getElementById('skipIntro').addEventListener('click',openFile);file.addEventListener('click',openFile);file.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openFile()}});
+document.getElementById('reopen').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});introOpened=false;intro.classList.remove('done');site.classList.remove('open');document.body.classList.add('lock')});
 document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.nav').classList.remove('open')}));
 
 const readingLine=document.getElementById('readingLine');
