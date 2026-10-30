@@ -82,42 +82,6 @@
 .intro-small{color:#b39b73;letter-spacing:2px}
 .tap-hint{color:#d3b77f}
 @media(max-width:600px){.file.file-image{width:min(90vw,72vh);max-height:72vh}.file.file-image .image-tap{font-size:8px;letter-spacing:1px}.intro-small{font-size:7px;bottom:calc(5vh + 24px)}}
-
-/* PAGE-BY-PAGE PHYSICAL DOSSIER */
-.site .top,.site>footer{display:none}.site main{max-width:1100px;margin:0 auto;padding:30px 18px 110px}
-.casebook-shell{position:relative;max-width:1050px;margin:0 auto;perspective:1800px}
-.casebook-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 auto 16px;max-width:940px;color:#b49a6c;font:10px var(--mono);letter-spacing:1.5px}
-.case-status{display:flex;gap:12px;align-items:center}.case-status i{width:7px;height:7px;background:#a51f1c;border-radius:50%;box-shadow:0 0 10px #a51f1c}
-.casebook{position:relative;min-height:660px;background:linear-gradient(105deg,#8e7146,#d2bd91 2%,#e5d5b2 7%,#d9c69e 50%,#cbb68a 98%,#80633d);color:#2c2116;border:1px solid #9c8053;padding:clamp(22px,5vw,58px);box-shadow:0 25px 75px #000b,0 0 0 7px #21180f,0 0 0 8px #74563388,inset 0 0 55px #80643a24;overflow:hidden}
-.casebook:before{content:"";position:absolute;inset:13px;border:1px solid #96794e70;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 7px,#80643a05 8px 9px)}
-.casebook:after{content:"CONFIDENTIAL · PERSONAL ARCHIVE";position:absolute;top:22px;right:30px;color:#806744;font:8px var(--mono);letter-spacing:2px}
-.case-page{position:relative;z-index:1;display:none;min-height:540px;animation:pageIn .48s ease both}.case-page.active{display:block}
-@keyframes pageIn{from{opacity:0;transform:translateX(24px) rotateY(-2deg)}to{opacity:1;transform:none}}
-.case-page .section-label,.case-page .hero-kicker{color:#92251f}.case-page h1,.case-page h2,.case-page h3{color:#302419}
-.case-page .hero{min-height:540px;padding:35px 12px;gap:35px;background:transparent;border:0;grid-template-columns:1.15fr .85fr}
-.case-page .hero-copy,.case-page .bodycopy,.case-page .event p,.case-page .card p,.case-page .wing p,.case-page .cert p{color:#5e4b31}
-.case-page .hero-sub{color:#705638}.case-page .hero-seal{background:#d1bd93;border-color:#96794e;box-shadow:8px 12px 25px #6b4f2b44}
-.case-page .hero-seal .seal-meta{color:#705638}.case-page .hero-seal .seal-meta strong{color:#302419}
-.case-page .section{padding:22px 12px;border:0}.case-page .section h2{margin-bottom:26px}
-.case-page .card,.case-page .wing,.case-page .cert{background:#d3c095;border-color:#a58b5d;box-shadow:inset 0 1px #fff5,0 3px 8px #765a3020}
-.case-page .card h3,.case-page .wing b,.case-page .cert h3{color:#302419}.case-page .card small,.case-page .cert small{color:#92251f}
-.case-page .card .number{color:#4b351b12}.case-page .card a,.case-page .event time{color:#8a251e}
-.case-page .timeline{border-color:#9d8051}.case-page .event:before{box-shadow:0 0 0 5px #a51f1c20}
-.case-page .fact{border-color:#a58b5d}.case-page .fact small{color:#92251f}.case-page .fact b{color:#302419}
-.case-page .contact{background:#d3c095;border-color:#a58b5d}.case-page .contact h2{color:#302419}
-.case-page .contact p,.case-page .contact-links{color:#5e4b31}.case-page .contact-links a{color:#76231d}
-.case-page .btn{color:#382a1b;border-color:#97774b}.case-page .btn.red{color:#f4e6c8;background:#92251f;border-color:#92251f}
-.case-page .hero h1 span,.case-page .section h2 span{color:#92251f}
-.case-page .page-foot{position:absolute;bottom:-12px;left:12px;right:12px;border-top:1px solid #9c80504d;padding-top:9px;display:flex;justify-content:space-between;color:#8a7049;font:8px var(--mono);letter-spacing:1.5px}
-.casebook-controls{display:flex;align-items:center;justify-content:center;gap:15px;margin:20px auto 0}
-.casebook-controls button{background:#17110b;border:1px solid #80623a;color:#e8d8b5;padding:13px 20px;font:10px var(--mono);letter-spacing:1.4px;cursor:pointer;min-width:115px}
-.casebook-controls button:disabled{opacity:.3;cursor:not-allowed}.casebook-controls button:not(:disabled):hover{background:#a51f1c;border-color:#a51f1c}
-.casebook-progress{width:min(180px,22vw);height:2px;background:#54412a;overflow:hidden}.casebook-progress span{display:block;height:100%;width:0;background:#b18a4c;transition:width .35s}
-.casebook-count{min-width:52px;text-align:center;color:#b49a6c;font:10px var(--mono)}
-.casebook-exit{position:absolute;right:0;top:-42px;background:transparent;border:0;color:#b49a6c;font:9px var(--mono);letter-spacing:1px;cursor:pointer}
-@media(max-width:760px){.site main{padding:26px 12px 95px}.casebook{min-height:700px;padding:30px 20px 42px}.case-page{min-height:610px}.case-page .hero{grid-template-columns:1fr;padding:22px 4px;min-height:610px}.case-page .hero-seal{justify-self:start;margin:10px 0}.case-page .section{padding:18px 4px}.case-page .contact{display:block}.case-page .contact-links{margin-top:22px}.casebook:after{font-size:7px;right:20px;top:17px}.casebook-controls{gap:8px}.casebook-controls button{min-width:88px;padding:12px 10px;font-size:9px}.casebook-count{min-width:42px}.casebook-progress{width:13vw}}
-@media(max-width:500px){.casebook{min-height:740px;padding:28px 15px 42px}.case-page{min-height:650px}.case-page .hero{min-height:650px}.case-page .hero h1{font-size:55px}.case-page .cards{grid-template-columns:1fr}.case-page .wings,.case-page .certs{grid-template-columns:1fr 1fr}.case-page .card{min-height:0;padding:18px}.case-page .card h3{margin:18px 0 8px;font-size:23px}.case-page .card p{font-size:11px}.case-page .contact h2{font-size:33px}.case-page .facts{grid-template-columns:1fr 1fr}.casebook-controls button{min-width:76px}}
-
 </style>
 </head>
 <body class="lock">
@@ -150,27 +114,9 @@
 </div>
 <script>
 const intro=document.getElementById('intro'),site=document.getElementById('site'),file=document.getElementById('file');
-let pages=[],pageIndex=0,touchStartX=0;
-function buildCasebook(){
- const main=document.querySelector('#site main'),sections=[...main.querySelectorAll(':scope > section')];
- const labels=['SUBJECT DOSSIER','PROFILE & BACKGROUND','SELECTED PROJECT EVIDENCE','CHRONOLOGICAL RECORD','COMMUNITY / U TOO CAN','CREDENTIALS & CERTIFICATES','CONTACT / END OF FILE'];
- const shell=document.createElement('div');shell.className='casebook-shell';
- const toolbar=document.createElement('div');toolbar.className='casebook-toolbar';toolbar.innerHTML='<span>PR SAVARAPU / PERSONAL DOSSIER</span><span class="case-status"><i></i> CLASSIFIED ARCHIVE</span>';
- const book=document.createElement('div');book.className='casebook';book.id='casebook';
- sections.forEach((section,i)=>{const page=document.createElement('article');page.className='case-page'+(i===0?' active':'');page.append(section);const foot=document.createElement('div');foot.className='page-foot';foot.innerHTML='<span>CASE FILE 001 · '+(labels[i]||'ARCHIVE')+'</span><span>PAGE '+String(i+1).padStart(2,'0')+' / '+String(sections.length).padStart(2,'0')+'</span>';page.append(foot);book.append(page)});
- const exit=document.createElement('button');exit.className='casebook-exit';exit.textContent='↶ CLOSE FILE';exit.addEventListener('click',closeFile);
- const controls=document.createElement('div');controls.className='casebook-controls';controls.innerHTML='<button id="prevPage" disabled>← PREVIOUS</button><span class="casebook-count" id="pageCount">01 / 07</span><div class="casebook-progress"><span id="pageProgress"></span></div><button id="nextPage">NEXT →</button>';
- shell.append(toolbar,book,exit,controls);main.replaceChildren(shell);pages=[...book.querySelectorAll('.case-page')];
- document.getElementById('prevPage').addEventListener('click',()=>showPage(pageIndex-1));
- document.getElementById('nextPage').addEventListener('click',()=>showPage(pageIndex+1));
- book.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});
- book.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchStartX;if(Math.abs(dx)>55)showPage(pageIndex+(dx<0?1:-1))},{passive:true});
- document.addEventListener('keydown',e=>{if(!site.classList.contains('open'))return;if(e.key==='ArrowRight')showPage(pageIndex+1);if(e.key==='ArrowLeft')showPage(pageIndex-1);if(e.key==='Escape')closeFile()});
- showPage(0,false);
-}
-function showPage(next,animate=true){if(next<0||next>=pages.length)return;pages[pageIndex]?.classList.remove('active');pageIndex=next;pages.forEach((p,i)=>p.classList.toggle('active',i===pageIndex));document.getElementById('pageCount').textContent=String(pageIndex+1).padStart(2,'0')+' / '+String(pages.length).padStart(2,'0');document.getElementById('pageProgress').style.width=((pageIndex+1)/pages.length*100)+'%';document.getElementById('prevPage').disabled=pageIndex===0;document.getElementById('nextPage').disabled=pageIndex===pages.length-1;if(animate)document.getElementById('casebook').scrollIntoView({behavior:'smooth',block:'center'})}
-function openFile(){intro.classList.add('done');site.classList.add('open');document.body.classList.remove('lock');if(!pages.length)buildCasebook();setTimeout(()=>document.getElementById('casebook').scrollIntoView({behavior:'smooth',block:'center'}),450)}
-function closeFile(){window.scrollTo({top:0,behavior:'smooth'});intro.classList.remove('done');site.classList.remove('open');document.body.classList.add('lock')}
+function openFile(){intro.classList.add('done');site.classList.add('open');document.body.classList.remove('lock');setTimeout(()=>document.getElementById('profile').scrollIntoView({behavior:'smooth'}),650)}
 file.addEventListener('click',openFile);file.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openFile()}});
+document.getElementById('reopen').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});intro.classList.remove('done');site.classList.remove('open');document.body.classList.add('lock')});
+document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.nav').classList.remove('open')}));
 </script>
 </body></html>
