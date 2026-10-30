@@ -1,1 +1,220 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>Praveen Raj Savarapu | Portfolio</title>
+<meta name="description" content="Portfolio of Praveen Raj Savarapu — Mechanical Engineering student, developer and creative problem solver.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#101010;--panel:#171717;--text:#eeeae3;--muted:#96918a;--red:#b84940;--line:#30302e;--gold:#c4a779}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,90%);margin:auto}
+.mono{font-family:'DM Mono',monospace;color:var(--red);font-size:11px;letter-spacing:2px;text-transform:uppercase}
+nav{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Playfair Display',serif;font-size:21px;letter-spacing:1px}
+.brand span{color:var(--red)}
+.navlinks{display:flex;gap:28px;color:#b8b4ad;font-size:13px}
+.navlinks a:hover{color:white}
+.menu{display:none;background:none;border:0;color:white;font-size:25px}
+.hero{min-height:690px;display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:65px;padding:85px 0}
+.eyebrow{margin-bottom:25px}
+h1{font:600 clamp(48px,7vw,86px)/1.08 'Playfair Display',serif;letter-spacing:-2px}
+h1 em{color:var(--red);font-weight:500}
+.hero p{color:#aaa69f;max-width:570px;margin:25px 0;font-size:16px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{padding:12px 20px;border:1px solid var(--line);font-size:12px;letter-spacing:.7px;transition:.25s}
+.btn.primary{background:var(--red);border-color:var(--red);color:white}
+.btn:hover{transform:translateY(-3px);border-color:var(--red)}
+.portrait{height:430px;border:1px solid #393632;background:linear-gradient(145deg,#282421,#111);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.portrait .initials{font:600 90px 'Playfair Display';color:#55423d}
+.portrait:after{content:"";position:absolute;inset:12px;border:1px solid #ffffff20;pointer-events:none}
+.portrait-note{position:absolute;bottom:24px;left:25px;z-index:2;background:#111d;padding:9px 13px;font:10px 'DM Mono';letter-spacing:1px}
+.section{padding:100px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:48px;gap:20px}
+h2{font:500 clamp(34px,5vw,51px) 'Playfair Display';margin-top:10px}
+.section-intro{color:var(--muted);max-width:390px;font-size:13px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.about-copy{font-size:16px;color:#aaa69f}
+.about-copy p+p{margin-top:18px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact{border:1px solid var(--line);padding:20px;background:var(--panel)}
+.fact small{display:block;color:var(--muted);font:10px 'DM Mono';text-transform:uppercase;letter-spacing:1px}
+.fact strong{display:block;margin-top:9px;font-size:14px;font-weight:500}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.project{background:var(--panel);border:1px solid var(--line);padding:30px;min-height:245px;position:relative;transition:.3s}
+.project:hover{border-color:var(--red);transform:translateY(-4px)}
+.project .number{font:11px 'DM Mono';color:var(--red)}
+.project h3{font:25px 'Playfair Display';margin:18px 0 10px}
+.project p{font-size:13px;color:var(--muted);max-width:460px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tags span{border:1px solid #393735;padding:4px 9px;font:9px 'DM Mono';color:#b8b3aa}
+.project-link{display:inline-block;margin-top:20px;color:var(--gold);font-size:12px}
+.timeline{border-left:1px solid #51413b;margin-left:8px}
+.entry{padding:0 0 36px 32px;position:relative}
+.entry:before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--red)}
+.entry .date{font:10px 'DM Mono';color:var(--red);letter-spacing:1px}
+.entry h3{font:22px 'Playfair Display';margin:6px 0}
+.entry p{color:var(--muted);font-size:13px;max-width:700px}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.skill{border:1px solid var(--line);padding:24px;background:var(--panel)}
+.skill h3{font:19px 'Playfair Display';margin-bottom:12px}
+.skill p{font-size:12px;color:var(--muted)}
+.contact{background:#171514;border:1px solid #39312d;padding:55px;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.contact h2{max-width:520px}
+.contact p{color:var(--muted);font-size:13px;margin-top:12px}
+footer{padding:28px 0;color:#77736d;font:10px 'DM Mono';display:flex;justify-content:space-between;gap:20px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:760px){
+ .navlinks{display:none;position:absolute;top:78px;left:0;right:0;background:#171717;padding:25px;flex-direction:column;z-index:5}
+ .navlinks.open{display:flex}.menu{display:block}
+ .hero{grid-template-columns:1fr;padding:65px 0;gap:35px;min-height:auto}
+ .portrait{height:360px;max-width:420px;width:100%;margin:auto}
+ .about-grid{grid-template-columns:1fr;gap:30px}
+ .project-grid{grid-template-columns:1fr}
+ .skills{grid-template-columns:1fr 1fr}
+ .section{padding:70px 0}
+ .section-head{display:block}.section-intro{margin-top:15px}
+ .contact{padding:30px;display:block}.contact .btn{display:inline-block;margin-top:25px}
+ footer{flex-direction:column}
+}
+@media(max-width:430px){.skills{grid-template-columns:1fr}.facts{gap:8px}.fact{padding:14px}h1{font-size:49px}}
+</style>
+</head>
+<body>
+<header class="wrap">
+<nav>
+<a class="brand" href="#">PR<span>.</span>SAVARAPU</a>
+<button class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+<div class="navlinks">
+<a href="#about">About</a><a href="#work">Projects</a><a href="#journey">Journey</a><a href="#skills">Expertise</a><a href="#contact">Contact</a>
+</div>
+</nav>
+</header>
+
+<main>
+<section class="hero wrap">
+<div class="reveal">
+<div class="mono eyebrow">Mechanical Engineer · Developer · Creator</div>
+<h1>Curiosity is<br>the beginning of <em>everything.</em></h1>
+<p>I'm Praveen Raj Savarapu — a Mechanical Engineering student at ANITS, exploring the intersection of engineering, technology and creative problem-solving.</p>
+<div class="actions">
+<a class="btn primary" href="#work">EXPLORE MY WORK ↗</a>
+<a class="btn" href="mailto:savarapupraveenraj123@gmail.com">GET IN TOUCH</a>
+</div>
+</div>
+<div class="portrait reveal">
+<div class="initials">PR.</div>
+<!-- Add your portrait as images/profile.jpg and uncomment this line -->
+<!-- <img src="images/profile.jpg" alt="Praveen Raj Savarapu"> -->
+<div class="portrait-note">ANITS · MECHANICAL ENGINEERING</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="wrap">
+<div class="section-head reveal"><div><div class="mono">01 / The person behind the work</div><h2>Beyond the ordinary.</h2></div><p class="section-intro">An engineer by education. A builder by instinct. Always learning, always experimenting.</p></div>
+<div class="about-grid reveal">
+<div class="about-copy">
+<p>I'm currently pursuing B.Tech in Mechanical Engineering at Anil Neerukonda Institute of Technology and Sciences (ANITS). I enjoy turning ideas into practical experiences — whether that's building a digital product, exploring a mechanical concept or contributing to a student community.</p>
+<p>My interests span web development, AI-assisted tools, mechanical design, student leadership and visual storytelling. I believe the best solutions come from connecting disciplines that are usually kept apart.</p>
+</div>
+<div class="facts">
+<div class="fact"><small>Education</small><strong>B.Tech Mechanical</strong></div>
+<div class="fact"><small>Institution</small><strong>ANITS, Visakhapatnam</strong></div>
+<div class="fact"><small>Focus</small><strong>Engineering & Technology</strong></div>
+<div class="fact"><small>Mindset</small><strong>Learn. Build. Improve.</strong></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="work">
+<div class="wrap">
+<div class="section-head reveal"><div><div class="mono">02 / Selected work</div><h2>Things I've built.</h2></div><p class="section-intro">Ideas brought to life through code, design and engineering curiosity.</p></div>
+<div class="project-grid">
+<article class="project reveal">
+<div class="number">PROJECT / 001</div><h3>Math-break — Adhikar</h3>
+<p>An engineering mathematics learning platform designed to provide step-by-step solutions with clear explanations aligned with the R23 regulation and university syllabus.</p>
+<div class="tags"><span>WEB DEVELOPMENT</span><span>ENGINEERING MATHS</span><span>R23</span></div>
+<a class="project-link" href="https://math-break.lovable.app/" target="_blank">Explore project ↗</a>
+</article>
+<article class="project reveal">
+<div class="number">PROJECT / 002</div><h3>U TOO CAN — Club Website</h3>
+<p>A digital presence for ANITS's student club, highlighting its six creative wings, student activities, identity and community contributions.</p>
+<div class="tags"><span>WEB DESIGN</span><span>RESPONSIVE UI</span><span>COMMUNITY</span></div>
+<a class="project-link" href="https://u2cstudentsclub.vercel.app/" target="_blank">Visit website ↗</a>
+</article>
+<article class="project reveal">
+<div class="number">PROJECT / 003</div><h3>Break-breaker.os</h3>
+<p>A web-based concept exploring an interactive digital experience. An ongoing experiment in interface design and building ideas into usable products.</p>
+<div class="tags"><span>WEB CONCEPT</span><span>UI DESIGN</span><span>EXPERIMENTATION</span></div>
+</article>
+<article class="project reveal">
+<div class="number">PROJECT / 004</div><h3>Mechanical Prototypes</h3>
+<p>Exploring mechanical systems, chassis concepts, component arrangements and practical design decisions through student engineering projects.</p>
+<div class="tags"><span>MECHANICAL DESIGN</span><span>PROTOTYPING</span><span>CAD INTEREST</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="section" id="journey">
+<div class="wrap">
+<div class="section-head reveal"><div><div class="mono">03 / Experience & milestones</div><h2>The journey so far.</h2></div></div>
+<div class="timeline reveal">
+<div class="entry"><div class="date">2026 · CAMPUS LEADERSHIP</div><h3>Student Tribe Campus Ambassador</h3><p>Selected as a campus ambassador, contributing to student engagement, campus outreach and event initiatives.</p></div>
+<div class="entry"><div class="date">22 FEB 2026 · BUILDATHON</div><h3>AI for Vizag Buildathon</h3><p>Participated in a 24-hour buildathon organised by Fluentgrid, exploring collaborative problem-solving and technology-led ideas.</p></div>
+<div class="entry"><div class="date">16–18 APR 2026 · WORKSHOP</div><h3>Machine Learning Workshop — ANITS</h3><p>Attended a workshop on Introduction to Machine Learning using Visual Programming and Kaggle Hackathons.</p></div>
+<div class="entry"><div class="date">ONGOING · STUDENT COMMUNITY</div><h3>U TOO CAN — Club Member</h3><p>Contributing to student club initiatives, digital presence, website development and creative activities at ANITS.</p></div>
+<div class="entry"><div class="date">ONGOING · EDUCATION</div><h3>B.Tech Mechanical Engineering</h3><p>Learning engineering fundamentals while exploring software, digital product development and interdisciplinary projects.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="skills">
+<div class="wrap">
+<div class="section-head reveal"><div><div class="mono">04 / Areas of exploration</div><h2>My toolkit.</h2></div></div>
+<div class="skills">
+<div class="skill reveal"><h3>Digital Building</h3><p>HTML · CSS · JavaScript · Responsive Design · GitHub · Vercel</p></div>
+<div class="skill reveal"><h3>AI & Data</h3><p>Machine Learning fundamentals · Orange Data Mining · Kaggle · AI-assisted workflows</p></div>
+<div class="skill reveal"><h3>Mechanical</h3><p>Mechanical Engineering fundamentals · Prototype concepts · Component design exploration</p></div>
+<div class="skill reveal"><h3>Creative</h3><p>Visual storytelling · Poster design · UI aesthetics · Digital content</p></div>
+<div class="skill reveal"><h3>Leadership</h3><p>Campus engagement · Student club activities · Collaboration · Event initiatives</p></div>
+<div class="skill reveal"><h3>Always Learning</h3><p>Experimenting with new tools, technologies and ways to solve real-world problems.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="wrap">
+<div class="contact reveal">
+<div><div class="mono">05 / Start a conversation</div><h2>Have an idea? Let's make it real.</h2><p>Open to collaborations, learning opportunities, creative projects and meaningful conversations.</p></div>
+<a class="btn primary" href="mailto:savarapupraveenraj123@gmail.com">SAY HELLO ↗</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="wrap">
+<span>© 2026 PRAVEEN RAJ SAVARAPU</span>
+<span>BUILT WITH CURIOSITY · VISAKHAPATNAM, INDIA</span>
+<div><a href="https://www.linkedin.com/in/praveen-raj-savarapu-b418a6395" target="_blank">LINKEDIN</a> · <a href="https://github.com/savarapupraveenraj123-code" target="_blank">GITHUB</a> · <a href="https://www.instagram.com/the_praaveen" target="_blank">INSTAGRAM</a></div>
+</footer>
+<script>
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
+
