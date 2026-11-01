@@ -287,6 +287,33 @@ html{scroll-padding-top:82px}
 @media(max-width:600px){.intro-title{top:clamp(112px,16vh,145px)}.intro-title b{font-size:27px}.intro-title i{font-size:7px;letter-spacing:1.3px}.intro-bottomline{left:6vw;right:6vw;font-size:6px}.intro .tap-hint{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.intro-beam,.intro-title,.intro-bottomline,.intro .tap-hint,.intro .file.file-image:after{animation:none;opacity:1}.intro .file.file-image{animation:none}}
 
+/* INTRO TIMING REFINEMENT — let the statement land before the evidence arrives */
+.intro-title{
+  animation:introTitleHold 3.55s cubic-bezier(.2,.75,.25,1) .15s both;
+}
+@keyframes introTitleHold{
+  0%{opacity:0;filter:blur(8px);transform:translate(-50%,16px)}
+  14%{opacity:1;filter:blur(0);transform:translate(-50%,0)}
+  76%{opacity:1;filter:blur(0);transform:translate(-50%,0)}
+  100%{opacity:0;filter:blur(5px);transform:translate(-50%,-10px)}
+}
+.intro .file.file-image{
+  animation:fileDrop 1.5s cubic-bezier(.18,.8,.25,1.15) 3.45s both;
+}
+.intro .tap-hint{
+  opacity:0;
+  animation:hintAppear .55s ease 5.05s forwards,hintPulse 2.8s ease-in-out 5.6s infinite;
+}
+@keyframes hintAppear{to{opacity:.78}}
+@media(max-width:600px){
+  .intro-title{top:clamp(112px,16vh,145px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .intro-title{animation:none;opacity:1}
+  .intro .file.file-image{animation:none;transform:none}
+  .intro .tap-hint{animation:none;opacity:1}
+}
+
 </style>
 </head>
 <body class="lock">
