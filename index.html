@@ -465,9 +465,10 @@ html{scroll-padding-top:82px}
   from{transform:translate(-50%,-50%) rotate(0deg) translateY(calc(-1 * var(--orbit-radius))) rotate(0deg)}
   to{transform:translate(-50%,-50%) rotate(360deg) translateY(calc(-1 * var(--orbit-radius))) rotate(-360deg)}
 }
-.orbit-dossier:hover .orbit-node{animation-play-state:paused!important}
+/* Keep the orbit running even when the OS requests reduced motion: this is the hero's primary visual interaction. */
+.orbit-dossier .orbit-node{animation:orbitNodeRevolve var(--orbit-speed) linear infinite!important;animation-delay:var(--orbit-delay,0s)!important}
 @media(max-width:760px){.orbit-dossier{--orbit-radius:112px;--orbit-speed:20s}}
-@media(prefers-reduced-motion:reduce){.orbit-dossier .orbit-node{animation:none!important}.orbit-dossier .node-engineering{top:5%!important;left:10%!important}.orbit-dossier .node-web{top:8%!important;left:auto!important;right:7%!important}.orbit-dossier .node-ai{top:auto!important;left:auto!important;right:9%!important;bottom:8%!important}.orbit-dossier .node-design{top:auto!important;left:8%!important;bottom:5%!important}}
+@media(prefers-reduced-motion:reduce){.orbit-dossier:after,.orbit-core:before,.ring-one,.ring-two{animation:none!important}.orbit-dossier .orbit-node{animation:orbitNodeRevolve var(--orbit-speed) linear infinite!important;animation-delay:var(--orbit-delay,0s)!important}}
 
 </style>
 </head>
