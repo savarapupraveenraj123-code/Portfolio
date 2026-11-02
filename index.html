@@ -372,6 +372,25 @@ html{scroll-padding-top:82px}
 @media(max-width:760px){.orbit-dossier{width:min(310px,78vw);margin:25px auto 12px}.orbit-core{width:82px;height:82px}.orbit-node{width:62px;height:62px}.orbit-node b{font-size:14px}.journal-grid{grid-template-columns:1fr}.journal-tile{min-height:150px}.github-panel{grid-template-columns:1fr;gap:12px}.github-panel img{max-width:100%}}
 @media(prefers-reduced-motion:reduce){.ring-one,.ring-two{animation:none}.journal-tile,.orbit-node{transition:none}}
 
+/* ORBIT MOTION — orbiting skill nodes around the fixed idea engine */
+.orbit-dossier{--orbit-speed:28s}
+.orbit-node{
+  top:0;right:auto;bottom:auto;left:0;
+  offset-path:circle(40% at 50% 50%);
+  offset-anchor:center;
+  offset-rotate:0deg;
+  animation:nodeOrbit var(--orbit-speed) linear infinite;
+  will-change:offset-distance;
+}
+.node-engineering{animation-delay:0s}
+.node-web{animation-delay:calc(var(--orbit-speed) * -.25)}
+.node-ai{animation-delay:calc(var(--orbit-speed) * -.5)}
+.node-design{animation-delay:calc(var(--orbit-speed) * -.75)}
+@keyframes nodeOrbit{to{offset-distance:100%}}
+.orbit-dossier:hover .orbit-node{animation-play-state:paused}
+@media(max-width:760px){.orbit-dossier{--orbit-speed:22s}}
+@media(prefers-reduced-motion:reduce){.orbit-node{animation:none;offset-path:none}.node-engineering{top:5%;left:10%}.node-web{top:8%;right:7%;left:auto}.node-ai{bottom:8%;right:9%;top:auto;left:auto}.node-design{bottom:5%;left:8%;top:auto}}
+
 /* ORBIT RESTYLE — precision instrument / idea constellation */
 .orbit-dossier{
   width:clamp(310px,39vw,470px);margin:22px auto 8px;
