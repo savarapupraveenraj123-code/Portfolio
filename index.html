@@ -371,6 +371,63 @@ html{scroll-padding-top:82px}
 .github-panel{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:24px;align-items:center;padding:22px;border:1px solid #59452e;background:#110e0a;margin-top:20px}.github-panel small{font:8px var(--mono);letter-spacing:1px;color:#c2a06a}.github-panel p{font:10px/1.8 var(--mono);color:#b7a78c}.github-panel img{width:100%;height:auto;min-width:0;filter:sepia(.3) hue-rotate(350deg) saturate(.8);background:#eee;padding:8px;border-radius:3px}
 @media(max-width:760px){.orbit-dossier{width:min(310px,78vw);margin:25px auto 12px}.orbit-core{width:82px;height:82px}.orbit-node{width:62px;height:62px}.orbit-node b{font-size:14px}.journal-grid{grid-template-columns:1fr}.journal-tile{min-height:150px}.github-panel{grid-template-columns:1fr;gap:12px}.github-panel img{max-width:100%}}
 @media(prefers-reduced-motion:reduce){.ring-one,.ring-two{animation:none}.journal-tile,.orbit-node{transition:none}}
+
+/* ORBIT RESTYLE — precision instrument / idea constellation */
+.orbit-dossier{
+  width:clamp(310px,39vw,470px);margin:22px auto 8px;
+  border:1px solid #9b784544;border-radius:50%;
+  background:radial-gradient(circle at 50% 48%,#3b241a55 0%,#17110c66 38%,#09080700 72%);
+  filter:drop-shadow(0 18px 34px #0008);
+}
+.orbit-dossier:before,.orbit-dossier:after{
+  content:"";position:absolute;border:1px solid #c1a06a20;border-radius:50%;
+  inset:7%;pointer-events:none;
+}
+.orbit-dossier:after{inset:17%;border-style:dashed;border-color:#a51f1c35;animation:orbitDash 48s linear infinite}
+@keyframes orbitDash{to{transform:rotate(360deg)}}
+.orbit-core{
+  width:116px;height:116px;border:1px solid #d2b477;
+  background:radial-gradient(circle at 38% 30%,#68472c 0,#24170f 46%,#090807 78%);
+  box-shadow:0 0 0 7px #b18a4c0b,0 0 0 8px #b18a4c36,0 0 38px #b18a4c36,0 0 90px #a51f1c20;
+  position:relative;
+}
+.orbit-core:before{content:"";position:absolute;inset:-15px;border:1px solid #b18a4c44;border-radius:50%;border-top-color:#d9bd82;border-bottom-color:transparent;animation:orbitCoreSpin 14s linear infinite}
+.orbit-core:after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#e3c58d;top:-17px;left:50%;box-shadow:0 0 12px #e3c58d}
+@keyframes orbitCoreSpin{to{transform:rotate(360deg)}}
+.orbit-core span{font:600 35px var(--type);letter-spacing:2px;color:#f0d7a4;text-shadow:0 0 18px #c89b55aa}
+.orbit-core small{font:7px var(--mono);line-height:1.6;letter-spacing:2px;color:#c9a66d}
+.orbit-ring{border-color:#c4a16b38;box-shadow:0 0 16px #b18a4c0a}
+.ring-one{width:76%;height:76%;border-style:dashed;animation:orbitSpin 36s linear infinite}
+.ring-two{width:98%;height:98%;border-color:#a51f1c55;animation:orbitSpinTwo 48s linear infinite}
+.orbit-node{
+  width:98px;height:54px;border-radius:3px;gap:2px;
+  border:1px solid #a985505e;
+  background:linear-gradient(135deg,#21180fef,#0d0b09f2);
+  box-shadow:0 8px 24px #000b,inset 0 1px #ffffff0b;
+  backdrop-filter:blur(8px);transform:rotate(-3deg);
+}
+.orbit-node:before{content:"";position:absolute;left:8px;top:8px;width:4px;height:4px;border-radius:50%;background:#c69a54;box-shadow:0 0 9px #c69a54}
+.orbit-node:hover{transform:translateY(-4px) scale(1.06) rotate(0);border-color:#e0bd7a;box-shadow:0 12px 30px #000c,0 0 22px #b18a4c25}
+.orbit-node b{font:600 17px var(--type);letter-spacing:1.5px;color:#f0dfbd}
+.orbit-node small{font:6px var(--mono);letter-spacing:1.2px;color:#c4a16b}
+.node-engineering{top:11%;left:1%;transform:rotate(-7deg)}
+.node-web{top:11%;right:1%;transform:rotate(7deg)}
+.node-ai{bottom:11%;right:1%;transform:rotate(-5deg)}
+.node-design{bottom:11%;left:1%;transform:rotate(5deg)}
+.orbit-caption{bottom:-25px;font-size:7px;letter-spacing:2.3px;color:#b89a69}
+@media(max-width:760px){
+ .orbit-dossier{width:min(84vw,390px);margin:25px auto 32px;justify-self:center}
+ .orbit-node{width:88px;height:50px}
+ .node-engineering{left:0}.node-web{right:0}.node-ai{right:0}.node-design{left:0}
+}
+@media(max-width:420px){
+ .orbit-dossier{width: min(88vw,340px)}
+ .orbit-core{width:98px;height:98px}
+ .orbit-node{width:78px;height:47px}
+ .orbit-node b{font-size:15px}.orbit-node small{font-size:5px}
+}
+@media(prefers-reduced-motion:reduce){.orbit-dossier:after,.orbit-core:before,.ring-one,.ring-two{animation:none!important}}
+
 </style>
 </head>
 <body class="lock">
