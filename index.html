@@ -566,7 +566,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeArchive();term
 document.getElementById('contactForm').addEventListener('submit',e=>{
   e.preventDefault();
   const form=new FormData(e.currentTarget);
-  const to='savarapupraveen123@gmail.com';
+  const to='savarapupraveenraj123@gmail.com';
   const subject=encodeURIComponent('Portfolio enquiry from '+form.get('name'));
   const body=encodeURIComponent('Name: '+form.get('name')+'\nEmail: '+form.get('email')+'\n\n'+form.get('message'));
   const gmail='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&su='+subject+'&body='+body;
