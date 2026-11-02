@@ -447,6 +447,28 @@ html{scroll-padding-top:82px}
 }
 @media(prefers-reduced-motion:reduce){.orbit-dossier:after,.orbit-core:before,.ring-one,.ring-two{animation:none!important}}
 
+
+/* ORBIT MOTION FIX — animate each node around the dossier centre */
+.orbit-dossier{--orbit-radius:165px;--orbit-speed:24s}
+.orbit-dossier .orbit-node{
+  top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;
+  offset-path:none!important;offset-distance:0!important;
+  animation:orbitNodeRevolve var(--orbit-speed) linear infinite!important;
+  animation-delay:var(--orbit-delay,0s)!important;
+  transform-origin:center;
+}
+.orbit-dossier .node-engineering{--orbit-delay:0s}
+.orbit-dossier .node-web{--orbit-delay:-6s}
+.orbit-dossier .node-ai{--orbit-delay:-12s}
+.orbit-dossier .node-design{--orbit-delay:-18s}
+@keyframes orbitNodeRevolve{
+  from{transform:translate(-50%,-50%) rotate(0deg) translateY(calc(-1 * var(--orbit-radius))) rotate(0deg)}
+  to{transform:translate(-50%,-50%) rotate(360deg) translateY(calc(-1 * var(--orbit-radius))) rotate(-360deg)}
+}
+.orbit-dossier:hover .orbit-node{animation-play-state:paused!important}
+@media(max-width:760px){.orbit-dossier{--orbit-radius:112px;--orbit-speed:20s}}
+@media(prefers-reduced-motion:reduce){.orbit-dossier .orbit-node{animation:none!important}.orbit-dossier .node-engineering{top:5%!important;left:10%!important}.orbit-dossier .node-web{top:8%!important;left:auto!important;right:7%!important}.orbit-dossier .node-ai{top:auto!important;left:auto!important;right:9%!important;bottom:8%!important}.orbit-dossier .node-design{top:auto!important;left:8%!important;bottom:5%!important}}
+
 </style>
 </head>
 <body class="lock">
