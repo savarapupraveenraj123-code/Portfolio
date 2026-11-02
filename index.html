@@ -449,7 +449,7 @@ html{scroll-padding-top:82px}
 
 
 /* ORBIT MOTION FIX — animate each node around the dossier centre */
-.orbit-dossier{--orbit-radius:165px;--orbit-speed:24s}
+.orbit-dossier{--orbit-radius:clamp(135px,17vw,215px);--orbit-speed:24s}
 .orbit-dossier .orbit-node{
   top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;
   offset-path:none!important;offset-distance:0!important;
@@ -467,7 +467,7 @@ html{scroll-padding-top:82px}
 }
 /* Keep the orbit running even when the OS requests reduced motion: this is the hero's primary visual interaction. */
 .orbit-dossier .orbit-node{animation:orbitNodeRevolve var(--orbit-speed) linear infinite!important;animation-delay:var(--orbit-delay,0s)!important}
-@media(max-width:760px){.orbit-dossier{--orbit-radius:112px;--orbit-speed:20s}}
+@media(max-width:760px){.orbit-dossier{--orbit-radius:clamp(112px,31vw,150px);--orbit-speed:20s}}
 @media(prefers-reduced-motion:reduce){.orbit-dossier:after,.orbit-core:before,.ring-one,.ring-two{animation:none!important}.orbit-dossier .orbit-node{animation:orbitNodeRevolve var(--orbit-speed) linear infinite!important;animation-delay:var(--orbit-delay,0s)!important}}
 
 </style>
