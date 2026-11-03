@@ -723,6 +723,33 @@ footer{padding:30px clamp(24px,9vw,145px);background:#080706;color:#9a8460;borde
 .case-shelf .shelf-stage:active{cursor:grabbing}
 @media(max-width:760px){.case-shelf{height:300px}.case-shelf .shelf-case{width:176px;height:238px;max-width:48vw}.case-shelf-wrap{overflow:hidden}.shelf-caption{padding:0 6%;}}
 @media(min-width:701px) and (max-width:1100px){.intro .intro-title{width:24%!important}.intro .file.file-image{width:27vw!important}.intro .intro-quote{left:74%;font-size:18px!important}}
+
+/* FINAL INTRO COMPOSITION — match approved reference layout */
+#intro{display:block!important;position:fixed!important;overflow:hidden!important}
+@media(min-width:701px){
+ #intro .intro-title{position:absolute!important;left:5%!important;right:auto!important;top:50%!important;bottom:auto!important;width:29%!important;max-width:490px!important;margin:0!important;transform:translateY(-50%)!important;text-align:left!important;z-index:6!important;animation:none!important;opacity:1!important}
+ #intro .intro-title span{font-size:10px!important;letter-spacing:5px!important}
+ #intro .intro-title b{font-size:clamp(42px,4.5vw,76px)!important;line-height:1.02!important;letter-spacing:-1.8px!important}
+ #intro .intro-title i{font-size:9px!important;letter-spacing:2.4px!important;margin-top:22px!important}
+ #intro #file.file-image{position:absolute!important;left:50%!important;right:auto!important;top:51%!important;bottom:auto!important;width:clamp(300px,27vw,430px)!important;height:min(66vh,570px)!important;max-height:570px!important;margin:0!important;transform:translate(-50%,-50%) rotate(1deg)!important;aspect-ratio:auto!important;z-index:7!important;animation:none!important;opacity:1!important}
+ #intro .intro-quote{position:absolute!important;display:block!important;left:71%!important;right:4%!important;top:50%!important;bottom:auto!important;width:25%!important;max-width:390px!important;margin:0!important;transform:translateY(-50%)!important;color:#ead9b9!important;font:italic clamp(19px,2.15vw,31px)/1.55 var(--stamp)!important;text-align:left!important;z-index:6!important}
+ #intro .intro-quote:before{content:"“"!important;display:inline!important;width:auto!important;height:auto!important;background:none!important;color:#c79a4c!important;font:italic 72px/0 var(--stamp)!important;margin-right:10px!important}
+ #intro .intro-quote:after{content:""!important;position:absolute!important;z-index:-1!important;width:270px!important;height:270px!important;right:-8px!important;top:50%!important;transform:translateY(-50%)!important;border-radius:50%!important;opacity:.22!important;background:repeating-radial-gradient(ellipse at 50% 50%,transparent 0 8px,#9b7442 9px 11px,transparent 12px 17px)!important;mask-image:radial-gradient(ellipse,#000 35%,transparent 72%)!important}
+ #intro .intro-quote em{color:#d2a34e!important}
+ #intro .intro-small{left:5%!important;right:auto!important;bottom:8%!important}
+ #intro .tap-hint{left:50%!important;right:auto!important;bottom:7%!important;transform:translateX(-50%)!important;text-align:center!important}
+ #intro .intro-bottomline{left:3.5%!important;right:3.5%!important;bottom:2%!important}
+}
+@media(max-width:700px){
+ #intro .intro-title{position:absolute!important;left:7%!important;right:7%!important;top:10%!important;bottom:auto!important;width:86%!important;max-width:none!important;transform:none!important;text-align:center!important;z-index:6!important;animation:none!important}
+ #intro .intro-title b{font-size:clamp(32px,8.5vw,46px)!important}
+ #intro #file.file-image{position:absolute!important;left:50%!important;right:auto!important;top:51%!important;bottom:auto!important;width:min(58vw,260px)!important;height:min(39vh,320px)!important;transform:translate(-50%,-50%) rotate(1deg)!important;z-index:7!important;animation:none!important}
+ #intro .intro-quote{position:absolute!important;left:8%!important;right:8%!important;width:84%!important;top:77%!important;bottom:auto!important;transform:none!important;text-align:center!important;font:italic 14px/1.5 var(--stamp)!important;z-index:6!important}
+ #intro .intro-quote:before{content:"“"!important;display:inline!important;background:none!important;color:#c79a4c!important;width:auto!important;height:auto!important;margin:0 5px 0 0!important}
+ #intro .intro-quote:after{display:none!important}
+ #intro .intro-small,#intro .tap-hint{display:none!important}
+ #intro .intro-bottomline{left:5%!important;right:5%!important;bottom:2%!important}
+}
 </style>
 </head>
 <body class="lock">
