@@ -608,6 +608,52 @@ footer{padding:30px clamp(24px,9vw,145px);background:#080706;color:#9a8460;borde
 @media(max-width:480px){.hero h1{font-size:57px}.hero-sub{font-size:16px}.hero-copy{font-size:11px}.hero-actions .btn{padding:13px 12px;font-size:8px}.facts{grid-template-columns:1fr 1fr}.fact{padding:15px;min-height:92px}.fact b{font-size:16px}.shelf-case{width:158px;height:220px}.shelf-cover{padding:17px 14px}.shelf-cover b{font-size:27px}.shelf-arrow{width:31px;height:36px}.case-shelf{height:285px}.shelf-caption{padding:15px 6px}}
 @media(prefers-reduced-motion:reduce){.reveal-ready{opacity:1;transform:none;transition:none}}
 
+
+/* INTRO REDESIGN — cinematic editorial title sequence */
+.intro{background:#080706;isolation:isolate;overflow:hidden}
+.intro:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(112deg,#090807 0%,#100c09 48%,#1a0d0b 100%)}
+.intro:after{content:"P.R.";position:absolute;z-index:0;left:3vw;bottom:-.22em;color:#d8c29a08;font:900 clamp(220px,39vw,560px)/.8 var(--type);letter-spacing:-.09em;pointer-events:none}
+.intro-atmosphere{z-index:0}
+.intro-beam{left:73%;width:35vw;transform:translateX(-50%) rotate(17deg);background:linear-gradient(90deg,transparent,#a51f1c0a 35%,#a51f1c38 50%,#c2a77a16 58%,transparent 75%);filter:blur(26px);animation:introRedSweep 7s ease-in-out infinite alternate}
+@keyframes introRedSweep{from{opacity:.35;transform:translateX(-65%) rotate(17deg)}to{opacity:1;transform:translateX(-30%) rotate(17deg)}}
+.intro .intro-frame:before,.intro .intro-frame:after{height:1px!important;background:linear-gradient(90deg,transparent,#9d7a4c88,transparent);animation:none!important}
+.intro .intro-frame:before{top:0}.intro .intro-frame:after{bottom:0}
+.intro-title{top:50%;left:13%;width:min(42vw,570px);transform:translateY(-50%);text-align:left;animation:editorialTitleIn 1.15s cubic-bezier(.2,.8,.2,1) .25s both}
+.intro-title span{font-size:9px;letter-spacing:5px;color:#c2a77a;margin-bottom:24px}
+.intro-title b{font:500 clamp(42px,6.2vw,88px)/.91 var(--type);letter-spacing:-2px;color:#eadfc9;text-shadow:0 8px 35px #000}
+.intro-title b:after{content:"";display:block;width:74px;height:3px;margin-top:25px;background:#a51f1c;box-shadow:0 0 22px #a51f1c88}
+.intro-title i{font-size:9px;letter-spacing:2px;line-height:2;color:#b49b75;margin-top:22px}
+@keyframes editorialTitleIn{from{opacity:0;transform:translate(-28px,-50%);filter:blur(8px)}to{opacity:1;transform:translate(0,-50%);filter:blur(0)}}
+.intro .file.file-image{left:auto;right:13%;top:50%;width:min(29vw,370px);height:min(62vh,510px);max-height:510px;transform:translateY(-50%) rotate(4deg);padding:0;border:1px solid #b18a4c66;background:#15100c;box-shadow:0 35px 100px #000,0 0 0 12px #b18a4c0a,0 0 70px #a51f1c20;animation:posterReveal 1.45s cubic-bezier(.16,.8,.2,1) .45s both;overflow:hidden}
+.intro .file.file-image:before{inset:10px;border:1px solid #c2a77a66;z-index:2}
+.intro .file.file-image:after{display:none}
+.intro .file.file-image img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.04);filter:sepia(.12) contrast(1.08);transition:transform 1.2s ease,filter .5s}
+.intro:not(.done) .file.file-image:hover img{transform:scale(1.1);filter:sepia(0) contrast(1.12)}
+.intro .file.file-image .image-tap{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:17px 8px;background:linear-gradient(transparent,#080706ed 35%);color:#e2c99d;font:8px var(--mono);letter-spacing:1.5px;text-align:center}
+@keyframes posterReveal{0%{opacity:0;transform:translate(80px,-46%) rotate(10deg) scale(.88);filter:blur(12px)}70%{opacity:1;transform:translate(-8px,-50%) rotate(2deg) scale(1.015);filter:blur(0)}100%{opacity:1;transform:translate(0,-50%) rotate(2deg) scale(1)}}
+.intro .archive-mark{left:5vw;top:6vh;font-size:8px;letter-spacing:2px;color:#9b8461}
+.intro .skip-intro{top:5.5vh;right:5vw;border-color:#8b2825;background:#100b09;color:#d7c29b}
+.intro .intro-small{left:13%;right:auto;bottom:9vh;color:#8c7657;font-size:8px;letter-spacing:2px}
+.intro .tap-hint{left:13%;right:auto;bottom:5vh;text-align:left;color:#d3b783;font-size:9px;letter-spacing:2px;animation:pulse 1.8s infinite}
+.intro .intro-bottomline{position:absolute;z-index:3;left:5vw;right:5vw;bottom:2.2vh;display:flex;justify-content:space-between;color:#806d52;font:8px var(--mono);letter-spacing:1.5px;pointer-events:none}
+.intro.done .file.file-image{transform:translateY(-46%) scale(.94) rotate(2deg);opacity:0}
+@media(max-width:700px){
+ .intro-title{top:17%;left:8%;width:84%;transform:none;text-align:left}
+ .intro-title b{font-size:clamp(37px,10vw,58px)}
+ .intro-title span{margin-bottom:12px}
+ .intro-title i{margin-top:12px;font-size:7px}
+ .intro-title b:after{margin-top:14px;width:48px}
+ .intro .file.file-image{right:50%;top:58%;width:min(56vw,260px);height:min(39vh,340px);transform:translate(50%,-50%) rotate(3deg)}
+ @keyframes posterReveal{0%{opacity:0;transform:translate(50%,30%) rotate(10deg) scale(.88);filter:blur(12px)}70%{opacity:1;transform:translate(50%,-54%) rotate(1deg) scale(1.015);filter:blur(0)}100%{opacity:1;transform:translate(50%,-50%) rotate(2deg) scale(1)}}
+ .intro .intro-small{left:8%;bottom:7.8vh;font-size:7px}
+ .intro .tap-hint{left:8%;bottom:4.5vh;font-size:8px}
+ .intro .archive-mark{left:8%;top:4.5vh;font-size:7px}
+ .intro .skip-intro{right:8%;top:4vh;padding:8px 10px;font-size:8px}
+ .intro .intro-bottomline{left:8%;right:8%;font-size:6px;bottom:1.5vh}
+}
+@media(max-height:650px) and (min-width:701px){.intro-title{top:48%}.intro .file.file-image{height:68vh;width:min(25vw,300px)}.intro .intro-small{bottom:7vh}.intro .tap-hint{bottom:3vh}}
+@media(prefers-reduced-motion:reduce){.intro-title,.intro .file.file-image,.intro-beam{animation:none!important}.intro .file.file-image{transform:translateY(-50%) rotate(2deg)}}
+
 </style>
 </head>
 <body class="lock">
