@@ -698,25 +698,29 @@ footer{padding:30px clamp(24px,9vw,145px);background:#080706;color:#9a8460;borde
 
 /* INTRO REBALANCE — centered evidence file with generous side spacing */
 @media(min-width:701px){
- .intro .intro-title{left:6.5%!important;right:auto!important;width:25%!important;max-width:340px!important;top:50%!important;transform:translateY(-50%)!important;text-align:left!important}
+ .intro .intro-title{left:5.5%!important;right:auto!important;width:26%!important;max-width:350px!important;top:50%!important;transform:translateY(-50%)!important;text-align:left!important;animation:none!important;opacity:1!important;filter:none!important}
  .intro .intro-title b{font-size:clamp(38px,4.2vw,62px)!important;line-height:1.02!important}
- .intro .file.file-image{left:50%!important;right:auto!important;top:50%!important;width:clamp(300px,27vw,390px)!important;height:min(64vh,520px)!important;transform:translate(-50%,-50%) rotate(1deg)!important}
- .intro .intro-quote{position:absolute;left:73%;right:5.5%;top:50%;transform:translateY(-50%);max-width:350px;color:#e9d9bb;font:italic clamp(18px,2vw,27px)/1.6 var(--stamp);text-align:left}
+ .intro .file.file-image{left:50%!important;right:auto!important;top:50%!important;width:clamp(290px,25vw,360px)!important;height:min(62vh,500px)!important;transform:translate(-50%,-50%) rotate(1deg)!important;animation:none!important;opacity:1!important}
+ .intro .intro-quote{position:absolute;left:73%;right:4.5%;top:50%;transform:translateY(-50%);max-width:330px;color:#e9d9bb;font:italic clamp(18px,2vw,27px)/1.6 var(--stamp);text-align:left}
  .intro .intro-quote:before{content:"";display:block;width:58px;height:2px;background:var(--red);margin:0 0 24px}
  .intro .intro-quote em{color:#d2a34e}
 }
 @media(max-width:700px){
- .intro .intro-title{left:8%!important;right:8%!important;top:13%!important;width:84%!important;max-width:none!important;transform:none!important;text-align:center!important}
+ .intro .intro-title{left:7%!important;right:7%!important;top:12%!important;width:86%!important;max-width:none!important;transform:none!important;text-align:center!important;animation:none!important;opacity:1!important;filter:none!important}
  .intro .intro-title b{font-size:clamp(34px,9vw,48px)!important}
- .intro .file.file-image{left:50%!important;right:auto!important;top:54%!important;width:min(58vw,260px)!important;height:min(40vh,330px)!important;transform:translate(-50%,-50%) rotate(1deg)!important}
- .intro .intro-quote{position:absolute;left:8%;right:8%;top:78%;transform:none;text-align:center;color:#e9d9bb;font:italic 14px/1.5 var(--stamp)}
+ .intro .file.file-image{left:50%!important;right:auto!important;top:53%!important;width:min(54vw,245px)!important;height:min(37vh,300px)!important;transform:translate(-50%,-50%) rotate(1deg)!important;animation:none!important;opacity:1!important}
+ .intro .intro-quote{position:absolute;left:8%;right:8%;top:77%;transform:none;text-align:center;color:#e9d9bb;font:italic 14px/1.5 var(--stamp)}
  .intro .intro-quote:before{content:"";display:block;width:34px;height:1px;background:var(--red);margin:0 auto 9px}
  .intro .intro-quote em{color:#d2a34e}
  .intro .tap-hint{display:none}
 }
 .case-shelf .shelf-arrow,.shelf-dots{display:none!important}
-.case-shelf .shelf-stage{cursor:grab}
+.case-shelf{overflow:visible}
+.case-shelf .shelf-stage{cursor:grab;min-width:0}
+.case-shelf .shelf-case{max-width:42vw}
 .case-shelf .shelf-stage:active{cursor:grabbing}
+@media(max-width:760px){.case-shelf{height:300px}.case-shelf .shelf-case{width:176px;height:238px;max-width:48vw}.case-shelf-wrap{overflow:hidden}.shelf-caption{padding:0 6%;}}
+@media(min-width:701px) and (max-width:1100px){.intro .intro-title{width:24%!important}.intro .file.file-image{width:27vw!important}.intro .intro-quote{left:74%;font-size:18px!important}}
 </style>
 </head>
 <body class="lock">
@@ -883,7 +887,7 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
 /* Interactive 3D project shelf */
 (()=>{
  const stage=document.getElementById('shelfStage');if(!stage)return;
- const cards=[...stage.querySelectorAll('.shelf-case')],dots=[];
+ const cards=[...stage.querySelectorAll('.shelf-case')];
  const data=[
  ['01 / COMMUNITY · WEB DESIGN','U TOO CAN — ANITS','A digital home for the student club, its six creative wings and student-led activities.','https://u2cstudentsclub.vercel.app/'],
  ['02 / EDTECH · PERSONAL PROJECT','MATH-BREAK — ADHIKAR','An engineering mathematics platform with structured, step-by-step solutions aligned with R23 and M1–M4.','https://math-break.lovable.app/'],
@@ -899,7 +903,6 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
    card.style.transform='translate(-50%,-50%) translateX('+x+'px) translateZ('+z+'px) rotateY('+ry+'deg) scale('+sc+')';
    card.style.zIndex=String(20-Math.abs(d));card.classList.toggle('active',d===0);card.setAttribute('aria-pressed',String(d===0));
   });
-  dots.forEach((d,i)=>d.classList.toggle('active',i===active));
   document.getElementById('shelfCount').textContent=String(active+1).padStart(2,'0')+' — 04';
   document.getElementById('shelfCategory').textContent=data[active][0];
   document.getElementById('shelfTitle').textContent=data[active][1];
@@ -909,9 +912,14 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
  function go(n){active=(n+cards.length)%cards.length;render()}
  cards.forEach((c,i)=>c.addEventListener('click',()=>{if(i!==active)go(i)}));
  let hoverTimer=null;
+ const stopAuto=()=>{if(hoverTimer){clearInterval(hoverTimer);hoverTimer=null}};
+ const startAuto=()=>{if(!hoverTimer&&!document.hidden)hoverTimer=setInterval(()=>{if(!dragging)go(active+1)},3200)};
  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
-  stage.addEventListener('pointerenter',()=>{if(!hoverTimer)hoverTimer=setInterval(()=>go(active+1),2600)});
-  stage.addEventListener('pointerleave',()=>{clearInterval(hoverTimer);hoverTimer=null});
+  stage.addEventListener('pointerenter',startAuto);
+  stage.addEventListener('pointerleave',stopAuto);
+  stage.addEventListener('focusin',stopAuto);
+  stage.addEventListener('focusout',e=>{if(!stage.contains(e.relatedTarget))startAuto()});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAuto();else if(stage.matches(':hover'))startAuto()});
  }
  stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(active-1);if(e.key==='ArrowRight')go(active+1)});
  stage.addEventListener('pointerdown',e=>{startX=e.clientX;dragging=true});
@@ -943,10 +951,9 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
 
 <style>
 /* Minimal black point with a warm gold tracking ring */
-<style>
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
  html,body,a,button,[role="button"],input,textarea{cursor:none!important}
- .case-cursor{position:fixed;left:0;top:0;width:7px;height:7px;border-radius:50%;background:#050505;border:1px solid #d5b36f;z-index:9999;pointer-events:none;opacity:0;transform:translate(-50%,-50%)}
+ .case-cursor{position:fixed;left:0;top:0;width:8px;height:8px;border-radius:50%;background:#050505;border:0;z-index:9999;pointer-events:none;opacity:0;transform:translate(-50%,-50%)}
  .case-cursor.visible{opacity:1}
  .case-cursor-ring{position:fixed;left:0;top:0;width:30px;height:30px;border:1px solid #c49a5a;border-radius:50%;z-index:9998;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .2s,width .2s,height .2s,border-color .2s;box-shadow:0 0 10px #c49a5a30}
  .case-cursor-ring.visible{opacity:.9}
