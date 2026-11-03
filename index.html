@@ -470,6 +470,32 @@ html{scroll-padding-top:82px}
 @media(max-width:760px){.orbit-dossier{--orbit-radius:clamp(112px,31vw,150px);--orbit-speed:20s}}
 @media(prefers-reduced-motion:reduce){.orbit-dossier:after,.orbit-core:before,.ring-one,.ring-two{animation:none!important}.orbit-dossier .orbit-node{animation:orbitNodeRevolve var(--orbit-speed) linear infinite!important;animation-delay:var(--orbit-delay,0s)!important}}
 
+/* 3D CASE ARCHIVE — original crimson, brass and charcoal palette */
+.case-shelf-wrap{--shelf-gold:#c69a54;position:relative;margin:34px 0 42px;padding:18px 0 20px;border-top:1px solid #6e5234;border-bottom:1px solid #6e5234;background:radial-gradient(ellipse at 50% 48%,#9b672018,transparent 62%),linear-gradient(180deg,#100c08a8,#080706a8);overflow:hidden;perspective:1500px;isolation:isolate}
+.case-shelf-wrap:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(0deg,transparent 0 4px,#c69a5408 5px),radial-gradient(ellipse at center,#b8863b18,transparent 70%)}
+.case-shelf-top{position:relative;z-index:2;display:flex;justify-content:space-between;padding:0 22px;color:#b99a68;font:9px var(--mono);letter-spacing:2px}
+.case-shelf{height:360px;position:relative;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;touch-action:pan-y}
+.shelf-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d}
+.shelf-case{position:absolute;top:50%;left:50%;width:220px;height:286px;padding:0;border:0;background:transparent;color:var(--paper);cursor:pointer;transform-style:preserve-3d;transform:translate(-50%,-50%);transition:transform .85s cubic-bezier(.2,.8,.2,1),filter .6s;will-change:transform;filter:brightness(.58);outline:none}
+.shelf-case:focus-visible .shelf-cover{outline:2px solid var(--shelf-gold);outline-offset:5px}
+.shelf-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;padding:23px 21px;border:1px solid #9b7547;background:linear-gradient(145deg,#302315,#171109 62%,#0b0907);box-shadow:inset 0 0 0 5px #c69a5410,0 25px 45px #0009;backface-visibility:hidden;transform:translateZ(13px);overflow:hidden}
+.shelf-cover:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#c69a5418,transparent 38%),repeating-linear-gradient(0deg,transparent 0 5px,#fff1 6px);mix-blend-mode:screen}
+.shelf-cover:after{content:"";position:absolute;inset:12px;border:1px solid #c69a5438;pointer-events:none}
+.shelf-cover small,.shelf-cover b,.shelf-cover i,.shelf-cover em{position:relative;z-index:1}
+.shelf-cover small{font:9px var(--mono);letter-spacing:1.5px;color:#d1ae72}
+.shelf-cover b{font:700 34px/.92 var(--type);letter-spacing:-1px;color:#e5d0a7;text-shadow:0 3px 18px #000}
+.shelf-cover i{font:italic 11px var(--stamp);color:#c49a5c;letter-spacing:1.5px}
+.shelf-cover em{font:9px var(--mono);font-style:normal;letter-spacing:1.5px;color:#e5c58a}
+.shelf-spine{position:absolute;inset:0 auto 0 0;width:28px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotateY(-90deg) translateZ(13px);transform-origin:left center;background:linear-gradient(90deg,#100b07,#6c4b27);border:1px solid #9b7547;color:#d6b77d;font:8px var(--mono);letter-spacing:1.5px}
+.shelf-case.active{filter:brightness(1.1);z-index:10}.shelf-case.active .shelf-cover{box-shadow:inset 0 0 0 5px #c69a5418,0 35px 65px #000b,0 0 50px #a52a241c}
+.shelf-arrow{position:absolute;z-index:15;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid #80623a;background:#120e09d9;color:#e2c38c;font:28px/1 var(--type);cursor:pointer;transition:.25s}
+.shelf-arrow:hover{background:#a52a24;color:#fff;border-color:#a52a24}.shelf-prev{left:14px}.shelf-next{right:14px}
+.shelf-caption{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 7%;min-height:100px}
+.shelf-caption small{font:9px var(--mono);letter-spacing:2px;color:var(--red)}.shelf-caption h3{font:500 clamp(22px,3vw,32px)/1.1 var(--type);margin:8px 0;color:#ead7b3;text-transform:uppercase}.shelf-caption p{font-size:11px;color:#aa9b80;margin:0;max-width:520px;line-height:1.8}
+.shelf-caption>a{flex-shrink:0;padding:12px 16px;border:1px solid #80623a;color:#e4c58b;font:9px var(--mono);letter-spacing:1px}.shelf-caption>a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.shelf-dots{position:relative;z-index:3;display:flex;justify-content:center;gap:9px;margin-top:16px}.shelf-dots button{width:22px;height:3px;padding:0;border:0;background:#6c5234;cursor:pointer}.shelf-dots button.active{background:var(--red);width:38px}
+@media(max-width:760px){.case-shelf{height:310px}.shelf-case{width:176px;height:238px}.shelf-cover{padding:19px 16px}.shelf-cover b{font-size:28px}.shelf-arrow{width:34px;height:34px}.shelf-prev{left:5px}.shelf-next{right:5px}.shelf-caption{padding:0 8px;align-items:flex-start;flex-direction:column;gap:14px}.shelf-caption>a{align-self:flex-start}.case-shelf-top{padding:0 8px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){.shelf-case,.shelf-arrow,.shelf-caption>a{transition:none}}
 </style>
 </head>
 <body class="lock">
@@ -485,7 +511,16 @@ html{scroll-padding-top:82px}
 <section class="section" id="profile"><div class="section-label">01 / SUBJECT DOSSIER</div><h2>Know the <span>investigator.</span></h2><div class="about-grid"><div class="bodycopy"><p>I'm Praveen Raj Savarapu, a B.Tech Mechanical Engineering student at Anil Neerukonda Institute of Technology and Sciences (ANITS), Visakhapatnam.</p><p>My interests move across mechanical concepts, web development, AI exploration and visual design. I enjoy learning by building — testing ideas, improving details and creating things that solve real problems.</p><p><em style="font-family:var(--stamp);color:var(--paper);font-size:17px">“Same person. Different perspectives.”</em></p></div><div class="facts"><div class="fact"><small>EDUCATION</small><b>B.Tech Mechanical</b></div><div class="fact"><small>INSTITUTION</small><b>ANITS</b></div><div class="fact"><small>OFFICIAL CLUB ROLE</small><b>Club Member · U2C</b></div><div class="fact"><small>CAMPUS ROLE</small><b>Student Tribe Ambassador</b></div></div></div></section>
 <section class="section" id="skills"><div class="section-label">01A / CAPABILITY INDEX</div><h2>Tools of the <span>investigation.</span></h2><p class="bodycopy">A working map of the disciplines I explore and the tools I use to turn ideas into tangible work.</p><div class="skill-grid"><article class="skill-panel"><small>01 / ENGINEERING</small><h3>Mechanical thinking</h3><p>Design exploration · Chassis concepts · Components · Dimensions · Prototyping</p><div class="skill-tags"><span>CAD / DESIGN EXPLORATION</span><span>MECHANICAL SYSTEMS</span><span>PROBLEM SOLVING</span></div></article><article class="skill-panel"><small>02 / DIGITAL BUILDING</small><h3>Web development</h3><p>Building responsive web experiences, interactive interfaces and project showcases.</p><div class="skill-tags"><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span><span>GITHUB</span><span>VERCEL</span></div></article><article class="skill-panel"><small>03 / EXPERIMENTATION</small><h3>AI & data exploration</h3><p>Learning through workshops, visual programming, datasets and practical AI concepts.</p><div class="skill-tags"><span>ORANGE DATA MINING</span><span>KAGGLE</span><span>AI CONCEPTS</span></div></article><article class="skill-panel"><small>04 / VISUAL COMMUNICATION</small><h3>Design & storytelling</h3><p>Visual identity, digital content, poster direction and cinematic presentation.</p><div class="skill-tags"><span>VISUAL DESIGN</span><span>CONTENT</span><span>STORYTELLING</span></div></article></div></section><section class="section projects-section" id="cases"><div class="section-label">02 / EVIDENCE & SELECTED WORK</div><h2>Open <span>case files.</span></h2>
 <p class="projects-intro">A closer look at the ideas, interfaces and engineering explorations behind the work. Each file records the problem, the approach and what exists so far.</p>
-<div class="project-filters" role="group" aria-label="Filter projects">
+<div class="case-shelf-wrap" aria-label="Interactive 3D project archive">
+<div class="case-shelf-top"><span>THE PROJECT ARCHIVE / 3D FILE INDEX</span><span id="shelfCount">01 — 04</span></div>
+<div class="case-shelf"><button class="shelf-arrow shelf-prev" type="button" aria-label="Previous project">‹</button><div class="shelf-stage" id="shelfStage">
+<button class="shelf-case active" type="button" data-index="0"><span class="shelf-spine">FILE 01 / COMMUNITY</span><span class="shelf-cover"><small>CASE FILE 001 · LIVE</small><b>U TOO<br>CAN</b><i>ANITS STUDENTS CLUB</i><em>SELECT DOSSIER ↗</em></span></button>
+<button class="shelf-case" type="button" data-index="1"><span class="shelf-spine">FILE 02 / EDUCATION</span><span class="shelf-cover"><small>CASE FILE 002 · LIVE</small><b>MATH<br>BREAK</b><i>ADHIKAR / R23</i><em>SELECT DOSSIER ↗</em></span></button>
+<button class="shelf-case" type="button" data-index="2"><span class="shelf-spine">FILE 03 / MOBILITY</span><span class="shelf-cover"><small>CASE FILE 003 · CONCEPT</small><b>BREAK<br>BREAKER</b><i>MOBILITY INTERFACE</i><em>SELECT DOSSIER ↗</em></span></button>
+<button class="shelf-case" type="button" data-index="3"><span class="shelf-spine">FILE 04 / MECHANICAL</span><span class="shelf-cover"><small>CASE FILE 004 · IN PROGRESS</small><b>MECH<br>STUDIES</b><i>ENGINEERING / PROTOTYPES</i><em>SELECT DOSSIER ↗</em></span></button>
+</div><button class="shelf-arrow shelf-next" type="button" aria-label="Next project">›</button></div>
+<div class="shelf-caption"><div><small id="shelfCategory">01 / COMMUNITY · WEB DESIGN</small><h3 id="shelfTitle">U TOO CAN — ANITS</h3><p id="shelfDescription">A digital home for the student club, its six creative wings and student-led activities.</p></div><a id="shelfOpen" href="https://u2cstudentsclub.vercel.app/" target="_blank" rel="noreferrer">OPEN PROJECT ↗</a></div>
+<div class="shelf-dots" id="shelfDots"><button class="active" aria-label="Project 1"></button><button aria-label="Project 2"></button><button aria-label="Project 3"></button><button aria-label="Project 4"></button></div></div><div class="project-filters" role="group" aria-label="Filter projects">
 <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">ALL FILES <span>04</span></button>
 <button class="filter-chip" type="button" data-filter="web" aria-pressed="false">WEB / DIGITAL</button>
 <button class="filter-chip" type="button" data-filter="concept" aria-pressed="false">CONCEPTS</button>
@@ -624,5 +659,42 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
  document.querySelectorAll('.project-card').forEach(card=>{card.hidden=filter!=='all'&&card.dataset.category!==filter});
 }));
 
+/* Interactive 3D project shelf */
+(()=>{
+ const stage=document.getElementById('shelfStage');if(!stage)return;
+ const cards=[...stage.querySelectorAll('.shelf-case')],dots=[...document.querySelectorAll('#shelfDots button')];
+ const data=[
+ ['01 / COMMUNITY · WEB DESIGN','U TOO CAN — ANITS','A digital home for the student club, its six creative wings and student-led activities.','https://u2cstudentsclub.vercel.app/'],
+ ['02 / EDTECH · PERSONAL PROJECT','MATH-BREAK — ADHIKAR','An engineering mathematics platform with structured, step-by-step solutions aligned with R23 and M1–M4.','https://math-break.lovable.app/'],
+ ['03 / MOBILITY · INTERFACE CONCEPT','BREAK-BREAKER OS','An experimental mobility dashboard exploring ride controls, analytics, safety views and AI-assisted fault alerts.','https://breakbreakeros.vercel.app/'],
+ ['04 / MECHANICAL · HANDS-ON','ENGINEERING PROTOTYPES','Mechanical design exploration, component selection, chassis concepts, dimensions and practical problem-solving.','#cases']
+ ];
+ let active=0,startX=0,dragging=false;
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ function render(){
+  cards.forEach((card,i)=>{
+   let d=i-active;if(d>2)d-=4;if(d< -2)d+=4;
+   const x=d*clamp(window.innerWidth*.205,130,245),z=d===0?90:-Math.abs(d)*105,ry=d*-48,sc=d===0?1:.82-Math.abs(d)*.035;
+   card.style.transform='translate(-50%,-50%) translateX('+x+'px) translateZ('+z+'px) rotateY('+ry+'deg) scale('+sc+')';
+   card.style.zIndex=String(20-Math.abs(d));card.classList.toggle('active',d===0);card.setAttribute('aria-pressed',String(d===0));
+  });
+  dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+  document.getElementById('shelfCount').textContent=String(active+1).padStart(2,'0')+' — 04';
+  document.getElementById('shelfCategory').textContent=data[active][0];
+  document.getElementById('shelfTitle').textContent=data[active][1];
+  document.getElementById('shelfDescription').textContent=data[active][2];
+  const link=document.getElementById('shelfOpen');link.href=data[active][3];link.textContent=active===3?'VIEW CASE NOTES ↗':'OPEN PROJECT ↗';
+ }
+ function go(n){active=(n+cards.length)%cards.length;render()}
+ cards.forEach((c,i)=>c.addEventListener('click',()=>{if(i!==active)go(i)}));
+ document.querySelector('.shelf-prev').addEventListener('click',()=>go(active-1));
+ document.querySelector('.shelf-next').addEventListener('click',()=>go(active+1));
+ dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));
+ stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(active-1);if(e.key==='ArrowRight')go(active+1)});
+ stage.addEventListener('pointerdown',e=>{startX=e.clientX;dragging=true});
+ stage.addEventListener('pointerup',e=>{if(!dragging)return;const dx=e.clientX-startX;if(Math.abs(dx)>45)go(active+(dx<0?1:-1));dragging=false});
+ stage.addEventListener('pointercancel',()=>dragging=false);
+ window.addEventListener('resize',render,{passive:true});render();
+})();
 </script>
 </body></html>
