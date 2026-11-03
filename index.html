@@ -916,4 +916,40 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
  }
 })();
 </script>
+
+<style>
+/* CASE FILE / custom brass-and-crimson bullet cursor */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  html,body,a,button,[role="button"],input,textarea{cursor:none!important}
+  .case-cursor{position:fixed;left:0;top:0;width:9px;height:23px;z-index:9999;pointer-events:none;opacity:0;transform:translate(-50%,-50%) rotate(42deg);transition:opacity .18s;filter:drop-shadow(0 0 5px #b18a4c88)}
+  .case-cursor:before{content:"";position:absolute;left:1px;top:0;width:7px;height:17px;border-radius:55% 55% 2px 2px;background:linear-gradient(90deg,#65451f 0%,#d8b36e 28%,#f0d49a 52%,#8d642f 100%);border:1px solid #e2c17d}
+  .case-cursor:after{content:"";position:absolute;left:2px;bottom:0;width:5px;height:7px;border-radius:1px 1px 3px 3px;background:linear-gradient(90deg,#741a17,#d23b30 55%,#741a17);border:1px solid #8e2922}
+  .case-cursor.visible{opacity:1}
+  .case-cursor.click{filter:drop-shadow(0 0 9px #c13a30);transform:translate(-50%,-50%) rotate(42deg) scale(1.28)}
+  .case-cursor-ring{position:fixed;left:0;top:0;width:27px;height:27px;border:1px solid #b18a4c99;border-radius:50%;z-index:9998;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .2s,width .2s,height .2s,border-color .2s}
+  .case-cursor-ring.visible{opacity:.8}
+  .case-cursor-ring.click{width:36px;height:36px;border-color:#c13a30}
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:reduce){
+  .case-cursor,.case-cursor-ring{display:none}
+}
+</style>
+<div class="case-cursor" id="caseCursor" aria-hidden="true"></div><div class="case-cursor-ring" id="caseCursorRing" aria-hidden="true"></div>
+<script>
+(()=> {
+ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(!fine||reduce)return;
+ const bullet=document.getElementById('caseCursor'),ring=document.getElementById('caseCursorRing');
+ let x=innerWidth/2,y=innerHeight/2,rx=x,ry=y,raf=0;
+ function move(e){x=e.clientX;y=e.clientY;bullet.style.left=x+'px';bullet.style.top=y+'px';bullet.classList.add('visible');ring.classList.add('visible');}
+ function follow(){rx+=(x-rx)*.19;ry+=(y-ry)*.19;ring.style.left=rx+'px';ring.style.top=ry+'px';raf=requestAnimationFrame(follow)}
+ addEventListener('pointermove',move,{passive:true});
+ addEventListener('pointerdown',()=>{bullet.classList.add('click');ring.classList.add('click')});
+ addEventListener('pointerup',()=>{bullet.classList.remove('click');ring.classList.remove('click')});
+ addEventListener('blur',()=>{bullet.classList.remove('visible');ring.classList.remove('visible')});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else if(!raf)raf=requestAnimationFrame(follow)});
+ raf=requestAnimationFrame(follow);
+})();
+</script>
 </body></html>
