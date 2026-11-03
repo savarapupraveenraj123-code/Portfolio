@@ -670,6 +670,31 @@ footer{padding:30px clamp(24px,9vw,145px);background:#080706;color:#9a8460;borde
  @keyframes posterReveal{0%{opacity:0;transform:translate(-50%,25%) rotate(8deg) scale(.9);filter:blur(10px)}70%{opacity:1;transform:translate(-50%,-53%) rotate(1deg) scale(1.01);filter:blur(0)}100%{opacity:1;transform:translate(-50%,-50%) rotate(2deg) scale(1)}}
 }
 
+
+/* INTRO CASE FILE — anchor poster to the far-right edge */
+@media(min-width:701px){
+  section.intro .file.file-image{
+    position:absolute!important;
+    left:auto!important;
+    right:2.5vw!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    top:50%!important;
+    width:clamp(280px,25vw,370px)!important;
+    height:min(64vh,510px)!important;
+    transform:translateY(-50%) rotate(2deg)!important;
+    z-index:5!important;
+  }
+  section.intro .intro-title{
+    left:8%!important;
+    right:auto!important;
+    width:36%!important;
+    max-width:470px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+  }
+}
+
 </style>
 </head>
 <body class="lock">
