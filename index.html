@@ -654,6 +654,22 @@ footer{padding:30px clamp(24px,9vw,145px);background:#080706;color:#9a8460;borde
 @media(max-height:650px) and (min-width:701px){.intro-title{top:48%}.intro .file.file-image{height:68vh;width:min(25vw,300px)}.intro .intro-small{bottom:7vh}.intro .tap-hint{bottom:3vh}}
 @media(prefers-reduced-motion:reduce){.intro-title,.intro .file.file-image,.intro-beam{animation:none!important}.intro .file.file-image{transform:translateY(-50%) rotate(2deg)}}
 
+
+/* INTRO LAYOUT FIX — strict two-column separation */
+@media(min-width:701px){
+ .intro .intro-title{left:8%!important;right:auto!important;width:36%!important;max-width:470px!important;top:50%!important;transform:translateY(-50%)!important;text-align:left!important}
+ .intro .intro-title b{font-size:clamp(40px,5.2vw,72px)!important;letter-spacing:-1.5px!important}
+ .intro .file.file-image{left:auto!important;right:8%!important;width:clamp(260px,26vw,350px)!important;height:min(61vh,490px)!important;top:50%!important;transform:translateY(-50%) rotate(2deg)!important}
+ @keyframes posterReveal{0%{opacity:0;transform:translate(70px,-50%) rotate(8deg) scale(.9);filter:blur(10px)}70%{opacity:1;transform:translate(-5px,-50%) rotate(1deg) scale(1.01);filter:blur(0)}100%{opacity:1;transform:translate(0,-50%) rotate(2deg) scale(1)}}
+ .intro .intro-small{left:8%!important;right:auto!important}
+ .intro .tap-hint{left:8%!important;right:auto!important}
+}
+@media(max-width:700px){
+ .intro .intro-title{left:8%!important;width:84%!important;right:auto!important}
+ .intro .file.file-image{left:50%!important;right:auto!important;top:60%!important;width:min(56vw,260px)!important;height:min(38vh,330px)!important;transform:translate(-50%,-50%) rotate(2deg)!important}
+ @keyframes posterReveal{0%{opacity:0;transform:translate(-50%,25%) rotate(8deg) scale(.9);filter:blur(10px)}70%{opacity:1;transform:translate(-50%,-53%) rotate(1deg) scale(1.01);filter:blur(0)}100%{opacity:1;transform:translate(-50%,-50%) rotate(2deg) scale(1)}}
+}
+
 </style>
 </head>
 <body class="lock">
