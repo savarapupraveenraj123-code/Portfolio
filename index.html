@@ -476,7 +476,7 @@ html{scroll-padding-top:82px}
 .case-shelf-top{position:relative;z-index:2;display:flex;justify-content:space-between;padding:0 22px;color:#b99a68;font:9px var(--mono);letter-spacing:2px}
 .case-shelf{height:360px;position:relative;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;touch-action:pan-y}
 .shelf-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d}
-.shelf-case{position:absolute;top:50%;left:50%;width:220px;height:286px;padding:0;border:0;background:transparent;color:var(--paper);cursor:pointer;transform-style:preserve-3d;transform:translate(-50%,-50%);transition:transform .85s cubic-bezier(.2,.8,.2,1),filter .6s;will-change:transform;filter:brightness(.58);outline:none}
+.shelf-case{position:absolute;top:50%;left:50%;width:220px;height:286px;padding:0;border:0;background:transparent;color:var(--paper);cursor:pointer;transform-style:preserve-3d;transform:translate(-50%,-50%);transition:transform .48s cubic-bezier(.2,.8,.2,1),filter .35s;will-change:transform;filter:brightness(.58);outline:none}
 .shelf-case:focus-visible .shelf-cover{outline:2px solid var(--shelf-gold);outline-offset:5px}
 .shelf-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;padding:23px 21px;border:1px solid #9b7547;background:linear-gradient(145deg,#302315,#171109 62%,#0b0907);box-shadow:inset 0 0 0 5px #c69a5410,0 25px 45px #0009;backface-visibility:hidden;transform:translateZ(13px);overflow:hidden}
 .shelf-cover:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#c69a5418,transparent 38%),repeating-linear-gradient(0deg,transparent 0 5px,#fff1 6px);mix-blend-mode:screen}
@@ -696,20 +696,22 @@ footer{padding:30px clamp(24px,9vw,145px);background:#080706;color:#9a8460;borde
 }
 
 
-/* INTRO REBALANCE — centered evidence file with generous side spacing */
+/* INTRO — explicit absolute three-column layout; avoids inherited flex/animation offsets */
 @media(min-width:701px){
- .intro .intro-title{left:5.5%!important;right:auto!important;width:26%!important;max-width:350px!important;top:50%!important;transform:translateY(-50%)!important;text-align:left!important;animation:none!important;opacity:1!important;filter:none!important}
+ .intro{display:block!important}
+ .intro .intro-title{position:absolute!important;display:block!important;left:5vw!important;right:auto!important;width:25vw!important;max-width:350px!important;top:50%!important;bottom:auto!important;margin:0!important;transform:translateY(-50%)!important;text-align:left!important;animation:none!important;opacity:1!important;filter:none!important;z-index:4!important}
  .intro .intro-title b{font-size:clamp(38px,4.2vw,62px)!important;line-height:1.02!important}
- .intro .file.file-image{left:50%!important;right:auto!important;top:50%!important;width:clamp(290px,25vw,360px)!important;height:min(62vh,500px)!important;transform:translate(-50%,-50%) rotate(1deg)!important;animation:none!important;opacity:1!important}
- .intro .intro-quote{position:absolute;left:73%;right:4.5%;top:50%;transform:translateY(-50%);max-width:330px;color:#e9d9bb;font:italic clamp(18px,2vw,27px)/1.6 var(--stamp);text-align:left}
+ .intro .file.file-image{position:absolute!important;display:block!important;left:50%!important;right:auto!important;top:50%!important;bottom:auto!important;margin:0!important;width:clamp(270px,25vw,360px)!important;height:min(62vh,500px)!important;aspect-ratio:auto!important;transform:translate(-50%,-50%) rotate(1deg)!important;animation:none!important;opacity:1!important;z-index:5!important}
+ .intro .intro-quote{position:absolute!important;display:block!important;left:73%!important;right:4vw!important;width:23vw!important;max-width:330px!important;top:50%!important;bottom:auto!important;margin:0!important;transform:translateY(-50%)!important;color:#e9d9bb;font:italic clamp(18px,2vw,27px)/1.6 var(--stamp);text-align:left;z-index:4!important}
  .intro .intro-quote:before{content:"";display:block;width:58px;height:2px;background:var(--red);margin:0 0 24px}
  .intro .intro-quote em{color:#d2a34e}
 }
 @media(max-width:700px){
- .intro .intro-title{left:7%!important;right:7%!important;top:12%!important;width:86%!important;max-width:none!important;transform:none!important;text-align:center!important;animation:none!important;opacity:1!important;filter:none!important}
- .intro .intro-title b{font-size:clamp(34px,9vw,48px)!important}
- .intro .file.file-image{left:50%!important;right:auto!important;top:53%!important;width:min(54vw,245px)!important;height:min(37vh,300px)!important;transform:translate(-50%,-50%) rotate(1deg)!important;animation:none!important;opacity:1!important}
- .intro .intro-quote{position:absolute;left:8%;right:8%;top:77%;transform:none;text-align:center;color:#e9d9bb;font:italic 14px/1.5 var(--stamp)}
+ .intro{display:block!important}
+ .intro .intro-title{position:absolute!important;display:block!important;left:7%!important;right:7%!important;top:12%!important;bottom:auto!important;width:86%!important;max-width:none!important;margin:0!important;transform:none!important;text-align:center!important;animation:none!important;opacity:1!important;filter:none!important;z-index:4!important}
+ .intro .intro-title b{font-size:clamp(32px,8.5vw,46px)!important}
+ .intro .file.file-image{position:absolute!important;display:block!important;left:50%!important;right:auto!important;top:52%!important;bottom:auto!important;width:min(54vw,245px)!important;height:min(37vh,300px)!important;aspect-ratio:auto!important;margin:0!important;transform:translate(-50%,-50%) rotate(1deg)!important;animation:none!important;opacity:1!important;z-index:5!important}
+ .intro .intro-quote{position:absolute!important;display:block!important;left:8%!important;right:8%!important;width:84%!important;top:78%!important;bottom:auto!important;margin:0!important;transform:none!important;text-align:center;color:#e9d9bb;font:italic 14px/1.5 var(--stamp);z-index:4!important}
  .intro .intro-quote:before{content:"";display:block;width:34px;height:1px;background:var(--red);margin:0 auto 9px}
  .intro .intro-quote em{color:#d2a34e}
  .intro .tap-hint{display:none}
@@ -913,7 +915,7 @@ document.querySelectorAll('.filter-chip').forEach(button=>button.addEventListene
  cards.forEach((c,i)=>c.addEventListener('click',()=>{if(i!==active)go(i)}));
  let hoverTimer=null;
  const stopAuto=()=>{if(hoverTimer){clearInterval(hoverTimer);hoverTimer=null}};
- const startAuto=()=>{if(!hoverTimer&&!document.hidden)hoverTimer=setInterval(()=>{if(!dragging)go(active+1)},3200)};
+ const startAuto=()=>{if(!hoverTimer&&!document.hidden)hoverTimer=setInterval(()=>{if(!dragging)go(active+1)},1450)};
  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
   stage.addEventListener('pointerenter',startAuto);
   stage.addEventListener('pointerleave',stopAuto);
